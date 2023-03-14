@@ -31,7 +31,7 @@ jobs:
       
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build --t rishabchauhan/server ./server
+      run: docker build -t rishabchauhan/server ./server
       
     - uses: actions/checkout@v3
     - name: Build the Docker image
