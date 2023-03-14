@@ -1,0 +1,16 @@
+---
+
+- name: Allowing AjdevTech Teams Ip at TSS Servers.
+  hosts: alltss
+  gather_facts: false
+  # hosts: WPG_whm
+  become: yes
+  tasks:
+     - name: Whitelist IP 
+       shell: csf -ta {{ ip }} 43200 {{ name }}
+       debug:
+        msg: |
+          The ip is {{ ip }}
+          The Name is {{ name }}
+       # shell: csf -tr {{ ip }}
+...
