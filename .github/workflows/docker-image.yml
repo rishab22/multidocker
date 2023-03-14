@@ -1,0 +1,36 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: docker/login-action@v2
+    - name: Login to Docker Hub
+      with:
+        username: ${{ secrets.DOCKERUSER }}
+        password: ${{ secrets.DOCKEPASS }}
+    
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build ./client --file Dockerfile --tag rishabchauhan/client
+    
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build ./nginx --file Dockerfile --tag rishabchauhan/nginx
+      
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build ./server --file Dockerfile --tag rishabchauhan/server
+      
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build ./worker --file Dockerfile --tag rishabchauhan/worker
