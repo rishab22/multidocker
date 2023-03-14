@@ -19,7 +19,7 @@ jobs:
         username: ${{ secrets.DOCKERUSER }}
         password: ${{ secrets.DOCKEPASS }}
       run: |
-        echo "${{ secrets.DOCKEPASS }}" | docker login -u "${{ secrets.DOCKERUSER }}" --password-stdin
+        echo "${{ secrets.DOCKERPASS }}" | docker login -u "${{ secrets.DOCKERUSER }}" --password-stdin
     
     - uses: actions/checkout@v3
     - name: Build the Docker image
