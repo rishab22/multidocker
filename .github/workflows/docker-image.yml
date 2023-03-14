@@ -23,16 +23,16 @@ jobs:
     
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build ./client --file Dockerfile --tag rishabchauhan/client
+      run: docker build -t rishabchauhan/client ./client
     
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build ./nginx --file Dockerfile --tag rishabchauhan/nginx
+      run: docker build -t rishabchauhan/nginx ./nginx
       
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build ./server --file Dockerfile --tag rishabchauhan/server
+      run: docker build --t rishabchauhan/server ./server
       
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build ./worker --file Dockerfile --tag rishabchauhan/worker
+      run: docker build -t rishabchauhan/worker ./worker
